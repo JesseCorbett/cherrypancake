@@ -46,7 +46,6 @@
       flex-direction: column;
       align-items: flex-end;
       transform-origin: bottom right;
-      animation: react-bob 4s ease-in-out infinite;
     }
 
     .reaction-avatar {
@@ -56,18 +55,6 @@
       filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.65)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
       user-select: none;
       -webkit-user-drag: none;
-    }
-
-    @keyframes react-bob {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      25% {
-        transform: translateY(-6px) rotate(-1deg);
-      }
-      75% {
-        transform: translateY(-2px) rotate(1deg);
-      }
     }
 
     @media (max-width: 600px) {
@@ -86,7 +73,7 @@
   <div class="stream-container">
     <iframe
       id="twitch-stream"
-      src=""
+      src="http://cherrypancake.site/"
       frameborder="0"
       allow="autoplay; fullscreen"
       allowfullscreen="true"
@@ -97,25 +84,6 @@
   <div class="reaction-overlay" aria-hidden="true">
     <img src="ellie.webp" alt="Ellie reacting to the stream" class="reaction-avatar">
   </div>
-
-  <script>
-    (function () {
-      const hostname = window.location.hostname || 'localhost';
-      const iframe = document.getElementById('twitch-stream');
-      
-      const parents = new Set(['localhost', '127.0.0.1']);
-      if (hostname) {
-        parents.add(hostname);
-      }
-
-      const parentParams = Array.from(parents)
-        .map(p => `parent=${encodeURIComponent(p)}`)
-        .join('&');
-
-      iframe.src = `https://player.twitch.tv/?channel=berrycrepe&${parentParams}&autoplay=true&muted=false`;
-    })();
-  </script>
-
 </body>
 
 </html>
